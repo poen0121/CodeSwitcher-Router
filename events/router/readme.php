@@ -32,11 +32,11 @@
 
 >> Main Directory
 
-	1.configs/routes : system configuration for the routes.
+	1.configs/routes : System configuration for the routes.
 
-	2.events/router : router controller script.
+	2.events/router : Router controller script.
 
-	3.templates/error/400 : system error templates.
+	3.templates/error/400 : System error templates.
 
 >> Configuration
 
