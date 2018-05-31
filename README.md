@@ -82,3 +82,11 @@ PHP Framework ( PHP >= 5.2.0 ) CLI,CGI
 	use csl_browser;
 	use csl_time;
 	use csl_debug;
+
+> Router Controller Main Directory
+
+	1.configs/routes : system configuration for the routes.
+
+	2.events/router : router controller script.
+
+	3.templates/error/400 : system error templates.
