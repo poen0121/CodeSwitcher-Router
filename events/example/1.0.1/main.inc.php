@@ -11,6 +11,9 @@ class example_c {
 		'time' => unixTime(), //Library Function
 		'text' => text(), //Model Function
 		'args' => $arg1 . '-' . $arg2);
+
+echo '<script src="'.csl_mvc::resource_path('test','tt.js',true).'"></script>';
+
 		csl_mvc :: view_template('example', $data); //View
 	}
 }
