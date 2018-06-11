@@ -2,7 +2,7 @@
 /*
 >> About
 
-	GitHub : https://github.com/poen0121/CodeSwitcher
+	GitHub : https://github.com/poen0121/CodeSwitcher-Router
 
 	CodeSwitcher is the code version control framework.
 
