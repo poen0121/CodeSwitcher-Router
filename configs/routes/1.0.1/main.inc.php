@@ -26,6 +26,7 @@ define('ROUTER_URL_VAR', 'show');
  Command -a function argument 2 => go
  ==============================================================
  */
+$ROUTES_CONF = array ();
 $ROUTES_CONF[''] = array ('-e' => 'home');
 $ROUTES_CONF['example'] = array ('-e' => 'example', '-c' => 'example_c', '-f' => 'index', '-a' => array ('test', 'go'));
 
