@@ -12,7 +12,7 @@
 
 >> Router Readme
 
-   Please read : events/router/readme.php
+	Please read : events/router/readme.php
 
 >> Set Directory Version
 
@@ -50,8 +50,8 @@
 	-----------------------------------------------------
 	<?php defined('BASEPATH') OR exit('No direct script access allowed');?>
 	-----------------------------------------------------
-
-    Step 6 : Coding mechanisms.
+	
+	Step 6 : Coding mechanisms.
 
 	#Normal Mode :
 	-----------------------------------------------------
@@ -175,11 +175,11 @@
 
 >> Useless
 
-    1.csl_mvc::start() is only available for the intro index.php file.
+	1.csl_mvc::start() is only available for the intro index.php file.
     
-    2.csl_mvc::is_portal() is only available for the intro index.php file.
+	2.csl_mvc::is_portal() is only available for the intro index.php file.
     
-    3.csl_mvc::script_event() only return the target router event name.
+	3.csl_mvc::script_event() only return the target router event name.
     
 */
 ?>
