@@ -1,10 +1,18 @@
 <?php
 /*
->> Controller
+>> Controller By Router
 
 	Events script directory relies on the version control mechanism.
 
 	Responsible for forwarding the request to process the request.
+	
+	Hide script file path information, through the router control script.
+
+	The developer uses the execution commands used by the router profile definition.
+
+>> Router Readme
+
+   Please read : events/router/readme.php
 
 >> Set Directory Version
 
@@ -14,10 +22,9 @@
 	└── main directory
 		├── 1.0.1
 		│	└── main.inc.php
-	  	├── ini
-		│	└── 1.0.1
-		│		└── version.php
-		└── index.php
+	  	└── ini
+			└── 1.0.1
+				└── version.php
 
 	Step 1 : Create a main directory.
 
@@ -44,23 +51,9 @@
 	<?php defined('BASEPATH') OR exit('No direct script access allowed');?>
 	-----------------------------------------------------
 
-	Step 6 : Create link file `index.php` in the main directory to display the page.
-	Note : This is not necessary unless you have to create a link to display the page.
-	-----------------------------------------------------
-	<?php
-	chdir(dirname(__FILE__));
-	include('../../core/main.inc.php');
-	csl_mvc::start();
-	?>
-	-----------------------------------------------------
+	Step 6 : URL call format.
 
-	Step 7 : URL call format.
-
-	domain / events / events script directory link file path
-	eg :
-	-----------------------------------------------------
-	example.com/events/example/index.php
-	-----------------------------------------------------
+	Please read the events/router/readme.php file for the URL.
 
 >> Revision Rule
 
@@ -170,5 +163,10 @@
 	Output >> TRUE
 	==============================================================
 
+>> Functionally Worthless
+
+    1.csl_mvc::start() is only available for the intro index.php file.
+    
+    2.csl_mvc::is_portal() is only available for the intro index.php file.
 */
 ?>
