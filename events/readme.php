@@ -163,7 +163,7 @@
 	Output >> TRUE
 	==============================================================
 
->> Functionally Worthless
+>> Useless
 
     1.csl_mvc::start() is only available for the intro index.php file.
     
