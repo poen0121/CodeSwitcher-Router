@@ -168,5 +168,8 @@
     1.csl_mvc::start() is only available for the intro index.php file.
     
     2.csl_mvc::is_portal() is only available for the intro index.php file.
+    
+    3.csl_mvc::script_event() only return the target router event name.
+    
 */
 ?>
