@@ -51,7 +51,17 @@
 	<?php defined('BASEPATH') OR exit('No direct script access allowed');?>
 	-----------------------------------------------------
 
-	Step 6 : URL call format.
+    Step 6 : Coding mechanisms.
+
+	#Normal Mode :
+	-----------------------------------------------------
+	<?php defined('BASEPATH') OR exit('No direct script access allowed');?>
+	<?php
+		coding ...
+	?>
+	-----------------------------------------------------
+
+	Step 7 : URL call format.
 
 	Please read the events/router/readme.php file for the URL.
 
