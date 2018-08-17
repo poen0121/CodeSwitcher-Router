@@ -73,7 +73,7 @@ if (is_array($ROUTES)) {
 			csl_error :: cast('Router failed - route goal \'' . $route . '\' not found', E_USER_NOTICE, 3);
 		}
 	} else {
-		csl_error :: cast('Router failed - undefined constant ROUTER_URL_VAR', E_USER_NOTICE, 3);
+		csl_error :: cast('Router failed - constant configuration for undefined routes', E_USER_NOTICE, 3);
 	}
 } else {
 	csl_error :: cast('Router failed - unknown routes configuration file', E_USER_NOTICE, 3);
