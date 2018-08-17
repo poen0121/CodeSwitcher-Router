@@ -3,13 +3,12 @@
 >> Information
 
 	Title		: router controller
-	Revision	: 1.0.1
 	Notes		:
 
 	Revision History:
-	When			Create		When		Edit		Description
+	Revision		When			Create		When		Edit		Description
 	---------------------------------------------------------------------------
-	07-10-2017		Poen		03-05-2018	Poen		Create the program.
+	1.0.1			07-10-2017		Poen		08-17-2018	Poen		Create the program.
 	---------------------------------------------------------------------------
 
 >> About
@@ -17,10 +16,6 @@
 	Hide script file path information, through the router control script.
 
 	The developer uses the execution commands used by the router profile definition.
-
->> Constant
-
-	ROUTER_URL_VAR : The name of the receiving parameter for the URL.
 
 >> Enabled
 
@@ -43,9 +38,22 @@
 	Directory : configs/routes
 
 	==============================================================
-	Set the URL to receive the parameter name for the route event controller.
+	Set the URI protocol of the route event controller.
+	This item determines which server global should be used to retrieve the URI string.  
+	The default setting of 'QUERY_STRING' works for most servers.
+	
+	'QUERY_STRING'  : Use the definition ROUTER_URI_QUERY_STRING configuration.
+	'PATH_INFO'     : Use the server PATH_INFO information configuration.
+	
+	WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded!
 	Example :
-	define('ROUTER_URL_VAR', 'show');
+	define('ROUTER_URI_PROTOCOL', 'QUERY_STRING');
+	==============================================================
+ 
+	==============================================================
+	Set the URI to receive the query string of the route event controller.
+	Example :
+	define('ROUTER_URI_QUERY_STRING', 'r');
 	==============================================================
 
 	==============================================================
@@ -67,9 +75,54 @@
 
 >> URL
 
-	Format : www.example.com/index.php?ROUTER_URL_VAR=[routes index]
+	URI protocol : QUERY_STRING
+	
+	Format : www.example.com/index.php?ROUTER_URI_QUERY_STRING=[routes index]
 
-	Example : www.example.com/index.php?show=example
+	Example : www.example.com/index.php?r=example
+	
+	URI protocol : PATH_INFO
+	
+	Format : www.example.com/index.php/[routes index]
+	
+	Example : www.example.com/index.php/example
+	-----------------------------------------------------
+	Remove the index.php file by default, the index.php file will be wrapped into your URLs:
+	
+	www.example.com/index.php/example
+	
+	If your Apache server has mod_rewrite enabled, you can easily remove the string and use simple rules to modify .htaccess.
+	
+	.htaccess file :
+	-----------------------------------------------------
+	# Apache rewrite URL configuration
+	
+	RewriteEngine On
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^(.*)$ index.php/$1 [L]
+	-----------------------------------------------------
+	
+	Assuming you are using an Nginx server, please refer to the settings below:
+	
+	nginx.conf file :
+	-----------------------------------------------------
+	# Nginx rewrite URL configuration
+	
+	location / {
+	  if (!-e $request_filename){
+	    rewrite ^(.*)$ /index.php/$1 break;
+	  }
+	}
+	-----------------------------------------------------
+	
+	Note : These specific rules may not apply to all Server configuration work.
+	
+>> CLI
+	
+	Format : $ php /var/www/html/index.php [routes index] argv...
+	
+	Example : $ php /var/www/html/index.php example
 
 >> Note
 

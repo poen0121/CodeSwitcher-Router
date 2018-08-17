@@ -1,3 +1,5 @@
+# Base configs
+
 Options All -Indexes
 <Files .htaccess>
 <IfModule authz_core_module>
@@ -23,3 +25,12 @@ Options All -Indexes
     Deny from all
 </IfModule>
 </Files>
+
+# Apache rewrite URL configuration
+
+#<IfModule mod_rewrite.c>
+#RewriteEngine On
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^(.*)$ index.php/$1 [L]
+#</IfModule>

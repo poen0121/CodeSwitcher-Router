@@ -2,12 +2,27 @@
 <?php
 /*
  ==============================================================
- Set the URL to receive the parameter name for the route event controller.
+ Set the URI protocol of the route event controller.
+ This item determines which server global should be used to retrieve the URI string.  
+ The default setting of 'QUERY_STRING' works for most servers.
+
+ 'QUERY_STRING'  : Use the definition ROUTER_URI_QUERY_STRING configuration.
+ 'PATH_INFO'     : Use the server PATH_INFO information configuration.
+
+ WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded!
  Example :
- define('ROUTER_URL_VAR', 'show');
+ define('ROUTER_URI_PROTOCOL', 'QUERY_STRING');
  ==============================================================
  */
-define('ROUTER_URL_VAR', 'show');
+define('ROUTER_URI_PROTOCOL', 'QUERY_STRING');
+/*
+ ==============================================================
+ Set the URI to receive the query string of the route event controller.
+ Example :
+ define('ROUTER_URI_QUERY_STRING', 'r');
+ ==============================================================
+ */
+define('ROUTER_URI_QUERY_STRING', 'r');
 /*
  ==============================================================
  Defines the name of the function to which the route points.

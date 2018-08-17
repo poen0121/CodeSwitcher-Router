@@ -2,9 +2,23 @@
 <?php
 $ROUTES = csl_mvc :: cue_config('routes'); //load routes configs
 if (is_array($ROUTES)) {
-	if (defined('ROUTER_URL_VAR')) {
-		$route = (isset ($_GET[ROUTER_URL_VAR]) ? $_GET[ROUTER_URL_VAR] : '');
-		if (is_string($route) && isset ($ROUTES[$route])) {
+	if (defined('ROUTER_URI_PROTOCOL') && defined('ROUTER_URI_QUERY_STRING')) {
+		/* receive route */
+		if (csl_mvc :: is_cli()) {
+			$route = ($_SERVER['argc'] > 1 ? $_SERVER['argv'][1] : '');
+		} else {
+			switch (ROUTER_URI_PROTOCOL) {
+				case 'QUERY_STRING' :
+					$route = (isset ($_GET[ROUTER_URI_QUERY_STRING]) ? $_GET[ROUTER_URI_QUERY_STRING] : '');
+					break;
+				case 'PATH_INFO' :
+					$route = csl_browser :: info('pathinfo');
+					$route = ltrim($route, '/');
+					break;
+			}
+		}
+		/* call route script */
+		if (isset ($ROUTES[$route])) {
 			$event = (isset ($ROUTES[$route]['-e']) && is_string($ROUTES[$route]['-e']) ? trim(csl_path :: norm($ROUTES[$route]['-e']), '/') : null);
 			$args = (isset ($ROUTES[$route]['-a']) && is_array($ROUTES[$route]['-a']) ? array_values($ROUTES[$route]['-a']) : array ());
 			if (isset ($event { 0 }) && csl_mvc :: is_event($event) && $event != csl_mvc :: script_event()) {
