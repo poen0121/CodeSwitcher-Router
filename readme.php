@@ -2,7 +2,7 @@
 /*
 >> About
 
-	GitHub : https://github.com/poen0121/CodeSwitcher-Router
+	GitHub : https://github.com/poen0121/CodeSwitcher
 
 	CodeSwitcher is the code version control framework.
 
@@ -70,6 +70,20 @@
 
 	Note: csl_mvc::start function only be called within the events script directory index.php file.
 
+	==============================================================
+	Returns the status of the interface cli type.
+	Usage : csl_mvc::is_cli();
+	Return : boolean
+	Return Note : FALSE when it fails or does not.
+	--------------------------------------------------------------
+	Example : $ php /var/www/html/index.php
+	csl_mvc::is_cli();
+	Output >> TRUE
+	Example : http://example.com/index.php
+	csl_mvc::is_cli();
+	Output >> FALSE
+	==============================================================
+	
 	==============================================================
 	Get the available version info from the file directory path name in the CodeSwitcher root directory.
 	Usage : csl_mvc::version($pathName,$mode);
