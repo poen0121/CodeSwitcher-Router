@@ -10,7 +10,7 @@ class example_c {
 		'language' => $language->gets('language_name'), //Language Function
 		'time' => unixTime(), //Library Function
 		'text' => text(), //Model Function
-		'args' => $arg1 . '-' . $arg2);
+		'args' => $arg1 . '-' . $arg2); //Argument Value
 		csl_mvc :: view_template('example', $data); //View
 	}
 }

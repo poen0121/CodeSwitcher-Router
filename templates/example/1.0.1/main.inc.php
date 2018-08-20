@@ -11,6 +11,7 @@
 Config Name : <?=$config;?><br />
 Language Name : <?=$language;?><br />
 Library Unix Time Stamp : <?=$time;?><br />
-Model Text : <?=$text;?>
+Model Text : <?=$text;?><br />
+Argument Value : <?=$args;?>
 <hr>
 </body></html>
