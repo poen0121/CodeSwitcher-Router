@@ -120,9 +120,9 @@
 	
 >> CLI
 	
-	Format : $ php /var/www/html/index.php [routes index] argv...
+	Format : $ php /var/www/index.php [routes index] argv...
 	
-	Example : $ php /var/www/html/index.php example
+	Example : $ php /var/www/index.php example
 
 >> Note
 
