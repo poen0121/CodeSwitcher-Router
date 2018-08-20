@@ -15,14 +15,10 @@ if (is_array($ROUTES)) {
 					$route = csl_browser :: info('pathinfo');
 					$route = (!is_null($route) ? ltrim($route, '/') : '');
 					break;
-				default:
-					$route = null;
-					csl_error :: cast('Router failed - invalid router URI protocol \'' . ROUTER_URI_PROTOCOL . '\'', E_USER_NOTICE, 3);
-					break;
 			}
 		}
 		/* call route script */
-		if (!is_null($route) && isset ($ROUTES[$route])) {
+		if (isset ($route) && isset ($ROUTES[$route])) {
 			$event = (isset ($ROUTES[$route]['-e']) && is_string($ROUTES[$route]['-e']) ? trim(csl_path :: norm($ROUTES[$route]['-e']), '/') : null);
 			$args = (isset ($ROUTES[$route]['-a']) && is_array($ROUTES[$route]['-a']) ? array_values($ROUTES[$route]['-a']) : array ());
 			if (isset ($event { 0 }) && csl_mvc :: is_event($event) && $event != csl_mvc :: script_event()) {
@@ -70,8 +66,8 @@ if (is_array($ROUTES)) {
 		elseif (!csl_debug :: is_display()) {
 			csl_mvc :: view_template('error/400'); //Http Error 400
 		}
-		elseif (is_null($route)) {
-			csl_error :: cast('Router failed - invalid routing information', E_USER_NOTICE, 3);
+		elseif (!isset ($route)) {
+			csl_error :: cast('Router failed - invalid router URI protocol \'' . ROUTER_URI_PROTOCOL . '\'', E_USER_NOTICE, 3);
 		}
 		elseif (!isset ($ROUTES[$route])) {
 			csl_error :: cast('Router failed - route goal \'' . $route . '\' not found', E_USER_NOTICE, 3);
