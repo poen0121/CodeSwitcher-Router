@@ -1,4 +1,4 @@
-# Base configs
+# Base configuration
 
 Options All -Indexes
 <Files .htaccess>
@@ -26,7 +26,7 @@ Options All -Indexes
 </IfModule>
 </Files>
 
-# Apache rewrite URL configuration
+# Rewrite URL configuration
 
 #<IfModule mod_rewrite.c>
 #RewriteEngine On
