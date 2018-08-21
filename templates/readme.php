@@ -6,7 +6,11 @@
 
 	Interface designer graphical interface design.
 
-	System directory: error/500 contains the main file and system display content file `content.txt`, the 'content.txt` is customizable content.
+>> System Directory
+
+	1.error/500
+	
+	2.error/400
 
 >> Content-Type
 
