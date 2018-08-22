@@ -71,7 +71,7 @@ if (is_array($ROUTES)) {
 			csl_mvc :: view_template('error/400'); //Http Error 400
 		}
 		elseif (!isset ($route)) {
-			if (ROUTER_URI_PATH_INFO_NORM) {
+			if (ROUTER_URI_PROTOCOL === 'PATH_INFO' && ROUTER_URI_PATH_INFO_NORM) {
 				csl_error :: cast('Router failed - invalid router URI due to bad request', E_USER_NOTICE, 3);
 			} else {
 				csl_error :: cast('Router failed - invalid router URI protocol \'' . ROUTER_URI_PROTOCOL . '\'', E_USER_NOTICE, 3);
