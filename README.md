@@ -89,4 +89,4 @@ PHP Framework ( PHP >= 5.2.12 ) CLI,CGI
 
 	2.events/router : Router controller script.
 
-	3.templates/error/400 : System error templates.
+	3.templates/error/400 : System error 400 content directory.
