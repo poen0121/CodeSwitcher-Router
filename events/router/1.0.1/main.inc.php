@@ -2,7 +2,7 @@
 <?php
 $ROUTES = csl_mvc :: cue_config('routes'); //load routes configs
 if (is_array($ROUTES)) {
-	if (defined('ROUTER_URI_PROTOCOL') && defined('ROUTER_URI_QUERY_STRING')) {
+	if (defined('ROUTER_URI_PROTOCOL') && defined('ROUTER_URI_QUERY_STRING') && defined('ROUTER_URI_PATH_INFO_NORM') && strlen(ROUTER_URI_QUERY_STRING) > 0 && is_bool(ROUTER_URI_PATH_INFO_NORM)) {
 		/* receive route */
 		if (csl_mvc :: is_cli()) {
 			$route = ($_SERVER['argc'] > 1 ? $_SERVER['argv'][1] : '');
@@ -13,7 +13,11 @@ if (is_array($ROUTES)) {
 					break;
 				case 'PATH_INFO':
 					$route = csl_browser :: info('pathinfo');
-					$route = (!is_null($route) ? ltrim($route, '/') : '');
+					if (ROUTER_URI_PATH_INFO_NORM) {
+						$route = (!is_null($route) && strpos(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), $_SERVER['SCRIPT_NAME']) === 0 ? null : (!is_null($route) ? ltrim($route, '/') : ''));
+					} else {
+						$route = (!is_null($route) ? ltrim($route, '/') : '');
+					}
 					break;
 			}
 		}
@@ -67,7 +71,11 @@ if (is_array($ROUTES)) {
 			csl_mvc :: view_template('error/400'); //Http Error 400
 		}
 		elseif (!isset ($route)) {
-			csl_error :: cast('Router failed - invalid router URI protocol \'' . ROUTER_URI_PROTOCOL . '\'', E_USER_NOTICE, 3);
+			if (ROUTER_URI_PATH_INFO_NORM) {
+				csl_error :: cast('Router failed - invalid router URI due to bad request', E_USER_NOTICE, 3);
+			} else {
+				csl_error :: cast('Router failed - invalid router URI protocol \'' . ROUTER_URI_PROTOCOL . '\'', E_USER_NOTICE, 3);
+			}
 		}
 		elseif (!isset ($ROUTES[$route])) {
 			csl_error :: cast('Router failed - route goal \'' . $route . '\' not found', E_USER_NOTICE, 3);
@@ -76,8 +84,11 @@ if (is_array($ROUTES)) {
 		if (!defined('ROUTER_URI_PROTOCOL')) {
 			csl_error :: cast('Router failed - undefined constant ROUTER_URI_PROTOCOL', E_USER_NOTICE, 3);
 		}
-		if (!defined('ROUTER_URI_QUERY_STRING')) {
+		if (!defined('ROUTER_URI_QUERY_STRING') || strlen(ROUTER_URI_QUERY_STRING) == 0) {
 			csl_error :: cast('Router failed - undefined constant ROUTER_URI_QUERY_STRING', E_USER_NOTICE, 3);
+		}
+		if (!defined('ROUTER_URI_PATH_INFO_NORM') || !is_bool(ROUTER_URI_PATH_INFO_NORM)) {
+			csl_error :: cast('Router failed - undefined constant ROUTER_URI_PATH_INFO_NORM', E_USER_NOTICE, 3);
 		}
 	}
 } else {

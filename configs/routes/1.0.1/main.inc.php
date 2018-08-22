@@ -25,6 +25,14 @@ define('ROUTER_URI_PROTOCOL', 'QUERY_STRING');
 define('ROUTER_URI_QUERY_STRING', 'r');
 /*
  ==============================================================
+ Set whether the URL starting from index.php/ is treated as an 400 bad request error when using the URI PATH_INFO protocol.
+ Example :
+ define('ROUTER_URI_PATH_INFO_NORM', false);
+ ==============================================================
+ */
+define('ROUTER_URI_PATH_INFO_NORM', false);
+/*
+ ==============================================================
  Defines the name of the function to which the route points.
  $ROUTES_CONF[ Route Name ] = Command Array;
  Route Name : The value passed through the URL.

@@ -8,7 +8,7 @@
 	Revision History:
 	Revision		When			Create		When		Edit		Description
 	---------------------------------------------------------------------------
-	1.0.1			07-10-2017		Poen		08-20-2018	Poen		Create the program.
+	1.0.1			07-10-2017		Poen		08-22-2018	Poen		Create the program.
 	---------------------------------------------------------------------------
 
 >> About
@@ -54,6 +54,12 @@
 	Set the URI to receive the query string of the route event controller.
 	Example :
 	define('ROUTER_URI_QUERY_STRING', 'r');
+	==============================================================
+
+	==============================================================
+	Set whether the URL starting from index.php/ is treated as an 400 bad request error when using the URI PATH_INFO protocol.
+	Example :
+	define('ROUTER_URI_PATH_INFO_NORM', false);
 	==============================================================
 
 	==============================================================
