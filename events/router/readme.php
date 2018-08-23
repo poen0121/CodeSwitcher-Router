@@ -33,7 +33,7 @@
 
 	3.templates/error/400 : System error 400 content directory.
 	
-	3.templates/error/404 : System error 404 content directory.
+	4.templates/error/404 : System error 404 content directory.
 
 >> Configuration
 
