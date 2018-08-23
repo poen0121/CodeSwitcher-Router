@@ -68,7 +68,7 @@ if (is_array($ROUTES)) {
 			}
 		}
 		elseif (!csl_debug :: is_display()) {
-			csl_mvc :: view_template('error/400'); //Http Error 400
+			csl_mvc :: view_template('error/' . (ROUTER_URI_PROTOCOL === 'PATH_INFO' ? '404' : '400')); //Http Error 404|400
 		}
 		elseif (!isset ($route)) {
 			if (ROUTER_URI_PROTOCOL === 'PATH_INFO' && ROUTER_URI_PATH_INFO_NORM) {

@@ -11,6 +11,8 @@
 	1.error/500
 	
 	2.error/400
+	
+	3.error/404
 
 >> Content-Type
 

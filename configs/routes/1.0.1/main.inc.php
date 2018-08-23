@@ -8,7 +8,9 @@
 
  'QUERY_STRING'  : Use the definition ROUTER_URI_QUERY_STRING configuration.
  'PATH_INFO'     : Use the server PATH_INFO information configuration.
-
+ 
+ Note: Use the 'QUERY_STRING' protocol to raise a 400 error when URI validation fails.
+ Note: Use the 'PATH_INFO' protocol to raise a 404 error when URI validation fails.
  WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded!
  Example :
  define('ROUTER_URI_PROTOCOL', 'QUERY_STRING');
@@ -25,7 +27,7 @@ define('ROUTER_URI_PROTOCOL', 'QUERY_STRING');
 define('ROUTER_URI_QUERY_STRING', 'r');
 /*
  ==============================================================
- Set whether the URL starting from index.php/ is treated as an 400 bad request error when using the URI PATH_INFO protocol.
+ Set whether the URL starting from index.php/ is treated as an 404 request error when using the URI PATH_INFO protocol.
  Example :
  define('ROUTER_URI_PATH_INFO_NORM', false);
  ==============================================================
