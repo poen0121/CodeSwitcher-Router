@@ -67,18 +67,23 @@ if (is_array($ROUTES)) {
 				csl_error :: cast('Router failed - invalid event script at route \'' . $route . '\'', E_USER_NOTICE, 3);
 			}
 		}
-		elseif (!csl_debug :: is_display()) {
-			csl_mvc :: view_template('error/' . (ROUTER_URI_PROTOCOL === 'PATH_INFO' ? '404' : '400')); //Http Error 404|400
-		}
 		elseif (!isset ($route)) {
 			if (ROUTER_URI_PROTOCOL === 'PATH_INFO' && ROUTER_URI_PATH_INFO_NORM) {
-				csl_error :: cast('Router failed - invalid router URI due to bad request', E_USER_NOTICE, 3);
+				if (!csl_debug :: is_display()) {
+					csl_mvc :: view_template('error/404'); //Http Error 404
+				} else {
+					csl_error :: cast('Router failed - invalid router URI due to bad request', E_USER_NOTICE, 3);
+				}
 			} else {
 				csl_error :: cast('Router failed - invalid router URI protocol \'' . ROUTER_URI_PROTOCOL . '\'', E_USER_NOTICE, 3);
 			}
 		}
 		elseif (!isset ($ROUTES[$route])) {
-			csl_error :: cast('Router failed - route goal \'' . $route . '\' not found', E_USER_NOTICE, 3);
+			if (!csl_debug :: is_display()) {
+				csl_mvc :: view_template('error/' . (ROUTER_URI_PROTOCOL === 'PATH_INFO' ? '404' : '400')); //Http Error 404|400
+			} else {
+				csl_error :: cast('Router failed - route goal \'' . $route . '\' not found', E_USER_NOTICE, 3);
+			}
 		}
 	} else {
 		if (!defined('ROUTER_URI_PROTOCOL')) {
